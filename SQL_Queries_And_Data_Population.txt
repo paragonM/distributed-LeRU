@@ -1,0 +1,150 @@
+CREATE KEYSPACE Leru  WITH replication = {'class':'NetworkTopologyStrategy','replication_factor': 2};
+USE Leru;
+
+create table store_by_user(
+        user_id int,
+         store_id int,
+         address text,
+         district text,
+         name text,
+         PRIMARY KEY((user_id),store_id));
+
+create table product_by_store(
+        store_id int,
+        prod_id int,
+        name text,
+        supplier_name text,
+        quantity int,
+        PRIMARY KEY((store_id),prod_id));
+
+create table update_inventory_bystoreid(
+        store_id int,
+        inventory_id int,
+        purchase_date timestamp,
+        cost varchar,
+        PRIMARY KEY((store_id),inventory_id));
+
+create table findstore_by_userid(
+	store_id int , 
+	user_id int , 
+	name text, 
+	supplier_id int, 
+	PRIMARY KEY((user_id), store_id) );
+
+create table update_product_quantity_bystore(
+	store_id int, 
+	product_id int, 
+	name text , 
+	supplier_id text ,
+	quantity int , 
+	PRIMARY KEY((store_id),product_id));
+
+create table find_user_by_userid(
+	district text, 
+	user_id int, 
+	name text, 
+	address text, 
+	stores text, 
+	phone_number int, 
+	passwords text , 
+	PRIMARY KEY(district, user_id));
+
+create table find_inventory_information_bystoreid(
+	store_id int, 
+	inventory_id int, 
+	inventory_name text, 
+	purchase_date date, 
+	durability_years int, 
+	cost float, 
+	PRIMARY KEY(store_id, inventory_id));
+
+INSERT INTO product_by_store(store_id, prod_id, name, quantity, supplier_name) VALUES(1, 1, 'Wheat Flour 12.5kg', 12, 'Lesotho Flour Mills');
+INSERT INTO product_by_store(store_id, prod_id, name, quantity, supplier_name) VALUES(2, 1, 'Wheat Flour 12.5kg', 65, 'Lesotho Flour Mills');
+INSERT INTO product_by_store(store_id, prod_id, name, quantity, supplier_name) VALUES(3, 1, 'Wheat Flour 12.5kg', 86, 'Lesotho Flour Mills');
+INSERT INTO product_by_store(store_id, prod_id, name, quantity, supplier_name) VALUES(4, 1, 'Wheat Flour 12.5kg', 12, 'Lesotho Flour Mills');
+INSERT INTO product_by_store(store_id, prod_id, name, quantity, supplier_name) VALUES(5, 1, 'Wheat Flour 12.5kg', 65, 'Lesotho Flour Mills');
+INSERT INTO product_by_store(store_id, prod_id, name, quantity, supplier_name) VALUES(6, 1, 'Wheat Flour 12.5kg', 25, 'Lesotho Flour Mills');
+INSERT INTO product_by_store(store_id, prod_id, name, quantity, supplier_name) VALUES(1, 2, 'Chicken 5kg', 10, 'Maseru Cash and Carry');
+INSERT INTO product_by_store(store_id, prod_id, name, quantity, supplier_name) VALUES(2, 2, 'Chicken 5kg', 42, 'Maseru Cash and Carry');
+INSERT INTO product_by_store(store_id, prod_id, name, quantity, supplier_name) VALUES(3, 2, 'Chicken 5kg', 10, 'Maseru Cash and Carry');
+INSERT INTO product_by_store(store_id, prod_id, name, quantity, supplier_name) VALUES(4, 2, 'Chicken 5kg', 10, 'Maseru Cash and Carry');
+INSERT INTO product_by_store(store_id, prod_id, name, quantity, supplier_name) VALUES(5, 2, 'Chicken 5kg', 42, 'Maseru Cash and Carry');
+INSERT INTO product_by_store(store_id, prod_id, name, quantity, supplier_name) VALUES(6, 2, 'Chicken 5kg', 37, 'Maseru Cash and Carry');
+INSERT INTO product_by_store(store_id, prod_id, name, quantity, supplier_name) VALUES(1, 3, '2lt Coke', 7, 'Maluti Mountain Brewery');
+INSERT INTO product_by_store(store_id, prod_id, name, quantity, supplier_name) VALUES(2, 3, '2lt Coke', 8, 'Maluti Mountain Brewery');
+INSERT INTO product_by_store(store_id, prod_id, name, quantity, supplier_name) VALUES(3, 3, '2lt Coke', 5, 'Maluti Mountain Brewery');
+INSERT INTO product_by_store(store_id, prod_id, name, quantity, supplier_name) VALUES(4, 3, '2lt Coke', 7, 'Maluti Mountain Brewery');
+INSERT INTO product_by_store(store_id, prod_id, name, quantity, supplier_name) VALUES(5, 3, '2lt Coke', 8, 'Maluti Mountain Brewery');
+INSERT INTO product_by_store(store_id, prod_id, name, quantity, supplier_name) VALUES(6, 3, '2lt Coke', 18, 'Maluti Mountain Brewery');
+INSERT INTO product_by_store(store_id, prod_id, name, quantity, supplier_name) VALUES(1, 4, 'Bread', 5, 'Blue Ribbon');
+INSERT INTO product_by_store(store_id, prod_id, name, quantity, supplier_name) VALUES(2, 4, 'Bread', 69, 'Blue Ribbon');
+INSERT INTO product_by_store(store_id, prod_id, name, quantity, supplier_name) VALUES(3, 4, 'Bread', 7, 'Blue Ribbon');
+INSERT INTO product_by_store(store_id, prod_id, name, quantity, supplier_name) VALUES(4, 4, 'Bread', 5, 'Blue Ribbon');
+INSERT INTO product_by_store(store_id, prod_id, name, quantity, supplier_name) VALUES(5, 4, 'Bread', 69, 'Blue Ribbon');
+INSERT INTO product_by_store(store_id, prod_id, name, quantity, supplier_name) VALUES(6, 4, 'Bread', 91, 'Blue Ribbon');
+INSERT INTO product_by_store(store_id, prod_id, name, quantity, supplier_name) VALUES(1, 5, 'Liquid Soap', 41, 'Browns Cash And Carry');
+INSERT INTO product_by_store(store_id, prod_id, name, quantity, supplier_name) VALUES(2, 5, 'Liquid Soap', 21, 'Browns Cash And Carry');
+INSERT INTO product_by_store(store_id, prod_id, name, quantity, supplier_name) VALUES(3, 5, 'Liquid Soap', 62, 'Browns Cash And Carry');
+INSERT INTO product_by_store(store_id, prod_id, name, quantity, supplier_name) VALUES(4, 5, 'Liquid Soap', 41, 'Browns Cash And Carry');
+INSERT INTO product_by_store(store_id, prod_id, name, quantity, supplier_name) VALUES(5, 5, 'Liquid Soap', 21, 'Browns Cash And Carry');
+INSERT INTO product_by_store(store_id, prod_id, name, quantity, supplier_name) VALUES(6, 5, 'Liquid Soap', 21, 'Browns Cash And Carry');
+INSERT INTO product_by_store(store_id, prod_id, name, quantity, supplier_name) VALUES(1, 6, 'Toilet Paper', 26, 'Sefalana');
+INSERT INTO product_by_store(store_id, prod_id, name, quantity, supplier_name) VALUES(2, 6, 'Toilet Paper', 56, 'Sefalana');
+INSERT INTO product_by_store(store_id, prod_id, name, quantity, supplier_name) VALUES(3, 6, 'Toilet Paper', 46, 'Sefalana');
+INSERT INTO product_by_store(store_id, prod_id, name, quantity, supplier_name) VALUES(4, 6, 'Toilet Paper', 26, 'Sefalana');
+INSERT INTO product_by_store(store_id, prod_id, name, quantity, supplier_name) VALUES(5, 6, 'Toilet Paper', 56, 'Sefalana');
+INSERT INTO product_by_store(store_id, prod_id, name, quantity, supplier_name) VALUES(6, 6, 'Toilet Paper', 3, 'Sefalana');
+INSERT INTO product_by_store(store_id, prod_id, name, quantity, supplier_name) VALUES(1, 7, 'Bath Soap', 30, 'Browns Cash And Carry');
+INSERT INTO product_by_store(store_id, prod_id, name, quantity, supplier_name) VALUES(2, 7, 'Bath Soap', 32, 'Browns Cash And Carry');
+INSERT INTO product_by_store(store_id, prod_id, name, quantity, supplier_name) VALUES(3, 7, 'Bath Soap', 52, 'Browns Cash And Carry');
+INSERT INTO product_by_store(store_id, prod_id, name, quantity, supplier_name) VALUES(4, 7, 'Bath Soap', 30, 'Browns Cash And Carry');
+INSERT INTO product_by_store(store_id, prod_id, name, quantity, supplier_name) VALUES(5, 7, 'Bath Soap', 32, 'Browns Cash And Carry');
+INSERT INTO product_by_store(store_id, prod_id, name, quantity, supplier_name) VALUES(6, 7, 'Bath Soap', 60, 'Browns Cash And Carry');
+INSERT INTO product_by_store(store_id, prod_id, name, quantity, supplier_name) VALUES(1, 8, 'Maize Meal 12.5kg', 32, 'Lesotho Flour Mills');
+INSERT INTO product_by_store(store_id, prod_id, name, quantity, supplier_name) VALUES(2, 8, 'Maize Meal 12.5kg', 13, 'Lesotho Flour Mills');
+INSERT INTO product_by_store(store_id, prod_id, name, quantity, supplier_name) VALUES(3, 8, 'Maize Meal 12.5kg', 12, 'Lesotho Flour Mills');
+INSERT INTO product_by_store(store_id, prod_id, name, quantity, supplier_name) VALUES(4, 8, 'Maize Meal 12.5kg', 32, 'Lesotho Flour Mills');
+INSERT INTO product_by_store(store_id, prod_id, name, quantity, supplier_name) VALUES(5, 8, 'Maize Meal 12.5kg', 13, 'Lesotho Flour Mills');
+INSERT INTO product_by_store(store_id, prod_id, name, quantity, supplier_name) VALUES(6, 8, 'Maize Meal 12.5kg', 28, 'Lesotho Flour Mills');
+INSERT INTO product_by_store(store_id, prod_id, name, quantity, supplier_name) VALUES(1, 9, 'Cooking Oil 750ml', 15, 'Sefalana');
+INSERT INTO product_by_store(store_id, prod_id, name, quantity, supplier_name) VALUES(2, 9, 'Cooking Oil 750ml', 56, 'Sefalana');
+INSERT INTO product_by_store(store_id, prod_id, name, quantity, supplier_name) VALUES(3, 9, 'Cooking Oil 750ml', 36, 'Sefalana');
+INSERT INTO product_by_store(store_id, prod_id, name, quantity, supplier_name) VALUES(4, 9, 'Cooking Oil 750ml', 15, 'Sefalana');
+INSERT INTO product_by_store(store_id, prod_id, name, quantity, supplier_name) VALUES(5, 9, 'Cooking Oil 750ml', 56, 'Sefalana');
+INSERT INTO product_by_store(store_id, prod_id, name, quantity, supplier_name) VALUES(6, 9, 'Cooking Oil 750ml', 6, 'Sefalana');
+INSERT INTO product_by_store(store_id, prod_id, name, quantity, supplier_name) VALUES(1, 10, 'Sugar 1kg', 28, 'Lesotho Sugar Packers');
+INSERT INTO product_by_store(store_id, prod_id, name, quantity, supplier_name) VALUES(2, 10, 'Sugar 1kg', 14, 'Lesotho Sugar Packers');
+INSERT INTO product_by_store(store_id, prod_id, name, quantity, supplier_name) VALUES(3, 10, 'Sugar 1kg', 46, 'Lesotho Sugar Packers');
+INSERT INTO product_by_store(store_id, prod_id, name, quantity, supplier_name) VALUES(4, 10, 'Sugar 1kg', 28, 'Lesotho Sugar Packers');
+INSERT INTO product_by_store(store_id, prod_id, name, quantity, supplier_name) VALUES(5, 10, 'Sugar 1kg', 14, 'Lesotho Sugar Packers');
+
+INSERT INTO find_user_by_userid(district, user_id, address, name, passwords, phone_number, stores) VALUES('Quthing', 1, 'Moyeni', 'Mokake Naleli', 'Mokake123', 53462337, 'Mokake Supermarket');
+INSERT INTO find_user_by_userid(district, user_id, address, name, passwords, phone_number, stores) VALUES('Butha-Buthe', 2, 'Likila', 'Moeling Lehlohonolo', 'Moeling123', 68762377, 'Moeling Supermarket');
+INSERT INTO find_user_by_userid(district, user_id, address, name, passwords, phone_number, stores) VALUES('Butha-Buthe', 3, 'Liphofung', 'Baba Liphapang', 'Baba123', 59794181, 'Baba Supermarket'); 
+INSERT INTO find_user_by_userid(district, user_id, address, name, passwords, phone_number, stores) VALUES('Maseru', 4, 'Morija', 'Malunga Mahlo', 'Malunga123', 68920929, 'Malunga Supermarket'); 
+INSERT INTO find_user_by_userid(district, user_id, address, name, passwords, phone_number, stores) VALUES('Berea', 5, 'Khube', 'Jockey Lineo', 'Jockey123', 69303407, 'Jockey Supermarket'); 
+INSERT INTO find_user_by_userid(district, user_id, address, name, passwords, phone_number, stores) VALUES('Qacha', 6, 'Tebellong', 'Matlali Tatolo', 'Matlali001', 59740001, 'Matlali Supermarket');
+
+INSERT INTO find_inventory_information_bystoreid(store_id, inventory_id, inventory_name, purchase_date, durability_years, cost) VALUES(1, 1, 'Motor Vehicle', '2018-04-26', 5, 1000.00);
+INSERT INTO find_inventory_information_bystoreid(store_id, inventory_id, inventory_name, purchase_date, durability_years, cost) VALUES(1, 2, 'Work Premises', '2018-04-26', 4, 2500.00);
+INSERT INTO find_inventory_information_bystoreid(store_id, inventory_id, inventory_name, purchase_date, durability_years, cost) VALUES(1, 3, 'Computers', '2018-04-26', 8, 5000.00);
+INSERT INTO find_inventory_information_bystoreid(store_id, inventory_id, inventory_name, purchase_date, durability_years, cost) VALUES(2, 1, 'Motor Vehicle', '2019-10-11', 5, 1000.00); 
+INSERT INTO find_inventory_information_bystoreid(store_id, inventory_id, inventory_name, purchase_date, durability_years, cost) VALUES(2, 2, 'Work Premises', '2019-10-11', 4, 2000.00);
+INSERT INTO find_inventory_information_bystoreid(store_id, inventory_id, inventory_name, purchase_date, durability_years, cost) VALUES(2, 3, 'Computers', '2019-10-11', 8, 4500.00);
+INSERT INTO find_inventory_information_bystoreid(store_id, inventory_id, inventory_name, purchase_date, durability_years, cost) VALUES(3, 1, 'Motor Vehicle', '2018-05-01', 5, 1000.00); 
+INSERT INTO find_inventory_information_bystoreid(store_id, inventory_id, inventory_name, purchase_date, durability_years, cost) VALUES(3, 2, 'Work Premises', '2018-05-01', 4, 1800.00);
+INSERT INTO find_inventory_information_bystoreid(store_id, inventory_id, inventory_name, purchase_date, durability_years, cost) VALUES(3, 3, 'Computers', '2018-05-01', 8, 4700.50);
+INSERT INTO find_inventory_information_bystoreid(store_id, inventory_id, inventory_name, purchase_date, durability_years, cost) VALUES(4, 1, 'Motor Vehicle', '2017-12-05', 5, 1000.00);
+INSERT INTO find_inventory_information_bystoreid(store_id, inventory_id, inventory_name, purchase_date, durability_years, cost) VALUES(4, 2, 'Work Premises', '2017-12-05', 4, 4000.00);
+INSERT INTO find_inventory_information_bystoreid(store_id, inventory_id, inventory_name, purchase_date, durability_years, cost) VALUES(4, 3, 'Computers', '2017-12-05', 8, 2450.00);
+INSERT INTO find_inventory_information_bystoreid(store_id, inventory_id, inventory_name, purchase_date, durability_years, cost) VALUES(5, 1, 'Motor Vehicle', '2020-10-30', 5, 1000.00);
+INSERT INTO find_inventory_information_bystoreid(store_id, inventory_id, inventory_name, purchase_date, durability_years, cost) VALUES(5, 2, 'Work Premises', '2020-10-30', 4, 7550.50);
+INSERT INTO find_inventory_information_bystoreid(store_id, inventory_id, inventory_name, purchase_date, durability_years, cost) VALUES(5, 3, 'Computers', '2020-10-30', 8, 3500.00);
+INSERT INTO find_inventory_information_bystoreid(store_id, inventory_id, inventory_name, purchase_date, durability_years, cost) VALUES(6, 1, 'Motor Vehicle', '2020-08-04', 5, 1000.00);
+INSERT INTO find_inventory_information_bystoreid(store_id, inventory_id, inventory_name, purchase_date, durability_years, cost) VALUES(6, 2, 'Work Premises', '2020-08-04', 4, 1012.40);
+INSERT INTO find_inventory_information_bystoreid(store_id, inventory_id, inventory_name, purchase_date, durability_years, cost) VALUES(6, 3, 'Computers', '2020-08-04', 8, 15000.00);
+
+
+SELECT * FROM product_by_store;
+SELECT * FROM  find_user_by_userid;
+SELECT * FROM find_inventory_information_bystoreid;
