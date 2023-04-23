@@ -1,0 +1,94 @@
+/*
+The KEYSPACE is created with a replication factor of 2 using the NetworkTopologyStrategy 
+class, which indicates that data should be replicated across multiple data centers.
+*/
+
+CREATE KEYSPACE Leru  WITH replication = {'class':'NetworkTopologyStrategy','replication_factor': 2};
+USE Leru;
+
+/*
+'store_by_user': A table that stores information about stores that are associated with a particular user.
+*/
+
+create table store_by_user(
+        user_id int,
+         store_id int,
+         address text,
+         district text,
+         name text,
+         PRIMARY KEY((user_id),store_id));
+
+/*
+'product_by_store': A table that stores information about the products available in each store.
+*/
+
+create table product_by_store(
+        store_id int,
+        prod_id int,
+        name text,
+        supplier_name text,
+        quantity int,
+        PRIMARY KEY((store_id),prod_id));
+
+/*
+'update_inventory_bystoreid': A table that stores information about updates to inventory for each store.
+*/
+
+create table update_inventory_bystoreid(
+        store_id int,
+        inventory_id int,
+        purchase_date timestamp,
+        cost varchar,
+        PRIMARY KEY((store_id),inventory_id));
+
+/*
+'findstore_by_userid': A table that allows users to search for stores associated with a particular
+user.
+*/
+
+create table findstore_by_userid(
+	store_id int , 
+	user_id int , 
+	name text, 
+	supplier_id int, 
+	PRIMARY KEY((user_id), store_id) );
+
+/*
+'update_product_quantity_bystore': A table that stores information about updates to the quantity of 
+a product in a particular store.
+*/
+
+create table update_product_quantity_bystore(
+	store_id int, 
+	product_id int, 
+	name text , 
+	supplier_id text ,
+	quantity int , 
+	PRIMARY KEY((store_id),product_id));
+
+/*
+'find_user_by_userid': A table that allows users to search for other users by their user ID and district.
+*/
+
+create table find_user_by_userid(
+	district text, 
+	user_id int, 
+	name text, 
+	address text, 
+	stores text, 
+	phone_number int, 
+	passwords text , 
+	PRIMARY KEY(district, user_id));
+/*
+find_inventory_information_bystoreid: A table that allows users to search for information about inventory
+for a particular store.
+*/
+
+create table find_inventory_information_bystoreid(
+	store_id int, 
+	inventory_id int, 
+	inventory_name text, 
+	purchase_date date, 
+	durability_years int, 
+	cost float, 
+	PRIMARY KEY(store_id, inventory_id));
