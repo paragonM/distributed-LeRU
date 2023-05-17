@@ -97,3 +97,4 @@ INSERT INTO find_inventory_information_bystoreid(store_id, inventory_id, invento
 INSERT INTO find_inventory_information_bystoreid(store_id, inventory_id, inventory_name, purchase_date, durability_years, cost) VALUES(6, 2, 'Work Premises', '2020-08-04', 4, 1012.40);
 INSERT INTO find_inventory_information_bystoreid(store_id, inventory_id, inventory_name, purchase_date, durability_years, cost) VALUES(6, 3, 'Computers', '2020-08-04', 8, 15000.00);
 
+insert into store_by_user (user_id,store_id,address,district,name) values (3,30,'moeta','pele','keke');
