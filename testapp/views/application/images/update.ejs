@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.84.0">
+    <title>updateform</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/checkout/">
+
+
+
+    <!-- Bootstrap core CSS -->
+<link href="/manu/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+
+    <!-- Custom styles for this template -->
+
+  </head>
+  <body class="bg-light">
+
+<div class="container">
+
+  <main>
+    <form id="funform" action="/updateinventory/<%=store%>/<%=product%>/<%=user%>" method="POST">
+    <div class="py-5 text-center">
+    <h2>Update/procurement form</h2>
+    </div>
+
+    <div class="row g-5">
+      <div class="col-md-7 col-lg-8">
+        <h4 class="mb-3">Update Product Details</h4>
+        <form class="needs-validation" novalidate>
+          <div class="row g-3">
+            <div class="col-sm-6">
+              <label for="firstName" class="form-label" name="name" >Product name</label>
+              <input type="text" class="form-control" id="firstName" name="name" value="<%=name%>" placeholder="" value="">
+              <div class="invalid-feedback">
+                Valid first name is required.
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <label for="lastName" class="form-label" name="price">Product Price</label>
+              <input type="text" class="form-control" name="price" id="lastName" placeholder="" value="<%=price %>">
+              <div class="invalid-feedback">
+                Valid last name is required.
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="email" class="form-label" name="supplier">Supplier name<span class="text-muted"></span></label>
+              <input  placeholder="" name="supplier" value="<%=supplier%>">
+              <div class="invalid-feedback">
+                Please enter a valid email address.
+              </div>
+            </div>
+            <div class="col-12">
+              <label for="email" class="form-label" name="buyamount">Buy price<span class="text-muted"></span></label>
+              <input  placeholder="" name="buyamount" value="<%=buyamount%>">
+              <div class="invalid-feedback">
+                Please enter a valid email address.
+              </div>
+            </div>
+          </div>
+        </div>
+          <hr class="my-4">
+          <h4 class="mb-3">Procurement</h4>
+          <div class="row g-3">
+            <div class="col-sm-6">
+              <label for="firstName" class="form-label" id="go">Number of goods purchased:</label>
+              <input type="text" class="form-control"name="goods" id="goods" placeholder="0" value="0">
+              <div class="invalid-feedback">
+                Valid first name is required.
+              </div>
+            </div>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="same-address">
+            <label class="form-check-label" for="same-address">all information above has been entered correctly. </label>
+          </div>
+          <hr class="my-4">
+          <button class="w-100 btn btn-primary btn-lg" onclick="move()">Proceed</button>
+
+        </form>
+      </main>
+
+      </div>
+
+  <footer class="my-5 pt-5 text-muted text-center text-small">
+    <p class="mb-1">&copy; 2023 LeRU</p>
+  </footer>
+  </body>
+  <script>
+
+
+
+
+    function move(){
+      var forme = document.getElementById("funform");
+      var goods = document.getElementById("goods");
+
+  //    goods.setAttribute('value',goods.value+ <%=quantity%>);
+goods.value = parseInt(goods.value)+parseInt(<%=quantity%>);
+
+      forme.submit();
+
+    }
+  </script>
+</html>

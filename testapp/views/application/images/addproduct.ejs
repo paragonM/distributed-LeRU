@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.84.0">
+    <title>Store registration</title>
+
+
+
+
+    <!-- Bootstrap core CSS -->
+<link href="/manu/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+
+    <!-- Custom styles for this template -->
+
+  </head>
+  <body class="bg-light">
+
+<div class="container">
+  <main>
+    <form class="" action="/addproduct/<%=owner%>/<%=store%>" method="post">
+
+
+    <div class="py-5 text-center">
+    <h2>Product entry form</h2>
+    </div>
+
+    <div class="row g-5">
+      <div class="col-md-7 col-lg-8">
+        <h4 class="mb-3">Add a product</h4>
+        <form class="needs-validation" novalidate>
+          <div class="row g-3">
+
+
+
+
+
+
+            <div class="col-12">
+              <label for="address" class="form-label">Product name</label>
+              <input type="text" class="form-control" id="name" name="name" placeholder="" >
+              <div class="invalid-feedback">
+                Please enter name.
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="address2" class="form-label">Supplier name<span class="text-muted"></span></label>
+              <input type="text" class="form-control" id="address2" name="supplier" placeholder="">
+            </div>
+            <div class="col-sm-6">
+              <label for="firstName" class="form-label">Buying price</label>
+              <input type="text" class="form-control" id="firstName" name="buying" placeholder="" value="" >
+              <div class="invalid-feedback">
+                Valid price is required.
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <label for="lastName" class="form-label">Selling price</label>
+              <input type="text" class="form-control" id="lastName" name="sellprice" placeholder="" value="" >
+              <div class="invalid-feedback">
+                Valid selling price is required.
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="address" class="form-label">Starting stock quantity</label>
+              <input type="text" class="form-control" id="name" name="quantity" placeholder="">
+              <div class="invalid-feedback">
+                Please enter quantity.
+              </div>
+            </div>
+
+
+
+            </div>
+          </div>
+        </div>
+          <hr class="my-4">
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="same-address">
+            <label class="form-check-label" for="same-address">I agree that all information has been entered correctly. </label>
+          </div>
+          <hr class="my-4">
+          <button class="w-100 btn btn-primary btn-lg" type="submit">Register</button>
+        </form>
+      </main>
+
+      </div>
+
+  <footer class="my-5 pt-5 text-muted text-center text-small">
+    <p class="mb-1">&copy; 2023 LeRU</p>
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+
+    <title>Add a store</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/checkout/">
+
+
+
+    <!-- Bootstrap core CSS -->
+<link href="/manu/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+
+    <!-- Custom styles for this template -->
+    <link href="form-validation.css" rel="stylesheet">
+  </head>
+  <body class="bg-light">
+
+<div class="container">
+  <main>
+    <div class="py-5 text-center">
+    <h2>Add a store</h2>
+    </div>
+
+    <div class="row g-5">
+      <div class="col-md-7 col-lg-8">
+        <h4 class="mb-3">Register store form</h4>
+        <form class="needs-validation" action="/addstore/<%=param%>" method="POST" novalidate>
+          <div class="row g-3">
+            <div class="col-12">
+              <label for="firstName" class="form-label">Name of store</label>
+              <input type="text" class="form-control" id="firstName" placeholder="" value="" name="name" required>
+              <div class="invalid-feedback">
+                Valid first name is required.
+              </div>
+            </div>
+
+
+            <div class="col-12">
+              <label for="address" class="form-label">Address</label>
+              <input type="text" class="form-control" id="address" placeholder="1234 Main St" name="address" required>
+              <div class="invalid-feedback">
+                Please enter address.
+              </div>
+            </div>
+
+
+            <div class="col-12">
+              <label for="state" class="form-label">District</label>
+              <select class="form-select" id="state" name="district" required>
+                <option value="">Choose...</option>
+                <option>Mabita</option>
+                <option>Maseru</option>
+              </select>
+              <div class="invalid-feedback">
+                Please provide a valid district.
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="zip" class="form-label">Branch</label>
+              <input type="text" class="form-control" id="Password" name="branch" placeholder="" required>
+              <div class="invalid-feedback">
+                set a password.
+              </div>
+            </div>
+          </div>
+
+        </div>
+          <hr class="my-4">
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="same-address">
+            <label class="form-check-label" for="same-address">I agree with all terms and conditions. </label>
+          </div>
+          <hr class="my-4">
+          <button class="w-100 btn btn-primary btn-lg" type="submit">Register</button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer class="my-5 pt-5 text-muted text-center text-small">
+    <p class="mb-1">&copy; 2023 LeRU</p>
+  </footer>
+</div>
+      <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+      <script src="form-validation.js"></script>
+  </body>
+</html>
