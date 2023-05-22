@@ -92,3 +92,4 @@ create table find_inventory_information_bystoreid(
 	durability_years int, 
 	cost float, 
 	PRIMARY KEY(store_id, inventory_id));
+ alter table product_by_store add amount text;
